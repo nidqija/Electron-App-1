@@ -5,20 +5,22 @@ const path = require('path');
 function createMainWindow() {
     const mainWindow = new BrowserWindow({  // Fix: Remove extra parentheses
         title: "Electron",
-        width: 1000,
-        height: 600,
+        width: 1200,
+        height: 800,
         webPreferences: {
-            nodeIntegration: true // Optional: Enables Node.js integration
+            nodeIntegration: true,
         }
     });
 
+
+
     const startUrl = url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, './my-react-app/dist/index.html'),
         protocol: 'file:',
         slashes: true // Fix: Ensure proper URL formatting
     });
 
-    mainWindow.loadURL(startUrl);
+    mainWindow.loadURL("http://localhost:5173");
 }
 
 app.whenReady().then(createMainWindow);
