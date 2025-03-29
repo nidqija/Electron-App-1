@@ -1,15 +1,15 @@
-
 import './App.css'
-import SideBar from './components/navbar'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NotesPage from './pages/notes';
 
 function App() {
-
   return (
-    <>
-    <SideBar/>
-     <h2 className='text-center'>hello</h2>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<NotesPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

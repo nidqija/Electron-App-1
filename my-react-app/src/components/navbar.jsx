@@ -1,24 +1,26 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../App.css";
+import Nav from 'react-bootstrap/Nav';
 
 function SideBar() {
   return (
-    <Navbar expand="lg" bg='primary' className='sideBar'>
-    <ul>
-        <li className='p-3'>hello</li>
-        <li className='p-3'>hello</li>
-        <li>hello</li>
-        <li>hello</li>
-        <li>hello</li>
-        <li>hello</li>
-        <li>hello</li>
-        <li>hello</li>
-
-    </ul>
-    </Navbar>
+    <div style={{backgroundColor :'rgb(24, 22, 26)'}}>
+    <Nav fill variant="tabs" defaultActiveKey="/home" >
+      <Nav.Item>
+        <Nav.Link eventKey="link">Active</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link-2">Link</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link-3" >
+          Disabled
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
+    </div>
   );
 }
 

@@ -5,8 +5,8 @@ const path = require('path');
 function createMainWindow() {
     const mainWindow = new BrowserWindow({  // Fix: Remove extra parentheses
         title: "Electron",
-        width: 1200,
-        height: 800,
+        width: 1024,
+        height: 768,
         webPreferences: {
             nodeIntegration: true,
         }
