@@ -1,6 +1,26 @@
-.headerBackground{
+.headerBackground {
     background-color: rgb(24, 22, 26);
-    height: 664px;
+    height: 600px;
+    z-index: -1;
+}
+
+.NoteTitle{
+    background-color:rgb(24, 22, 26);
+    width: 100%;
+    height: 100%;
 }
 
 
+body {
+    padding-bottom: 60px; 
+}
+
+@font-face {
+    font-family: League Spartan;
+    src: url(../public/LeagueSpartan-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Hanken Grotesk;
+    src: url(../public/HankenGrotesk-VariableFont_wght.ttf);
+}

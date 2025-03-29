@@ -1,16 +1,11 @@
-
-
-function Header(){
-    return(
-        <>
+function Header() {
+    return (
+      <>
         <div className="headerBackground">
-          
         </div>
-        
-        
-        </>
-    )
-}
-
-
-export default Header;
+      </>
+    );
+  }
+  
+  export default Header;
+  
