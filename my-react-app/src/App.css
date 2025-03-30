@@ -12,8 +12,16 @@
 
 
 body {
-    padding-bottom: 60px; 
+    padding-bottom: 20px; 
     background-color: rgb(24, 22, 26);
+}
+
+#ChoicesMenu{
+    background-color: rgb(24, 22, 26); 
+    color: white;
+    font-family: Hanken Grotesk;
+    font-size: 18px;
+    border-color: white;
 }
 
 @font-face {
