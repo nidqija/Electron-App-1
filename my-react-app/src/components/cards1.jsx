@@ -1,50 +1,30 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import { FaArrowRight } from "react-icons/fa";
 
-function Cards1(){
+
+function Cards1({item}){
     return(
-            <Row xs={1} md={2} className="g-4">
+      <>
+    
+              <div >
                 <Col >
-                  <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                      <Card.Title>Card title</Card.Title>
+                  <Card style={{height : '200px' , backgroundColor :'rgb(24, 22, 26)', borderColor : "white"}}>
+                    <Card.Body style={{color :'white'}}>
+                      <Card.Title>{item.title} </Card.Title>
                       <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
+                      {item.description}
                       </Card.Text>
                     </Card.Body>
+                    <Button style={{backgroundColor:'rgb(24, 22, 26)', borderColor : "white"}}><FaArrowRight/></Button>
                   </Card>
                 </Col>
-                <Col >
-                  <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                      <Card.Title>Card title</Card.Title>
-                      <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col >
-                  <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                      <Card.Title>Card title</Card.Title>
-                      <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-            </Row>
+                </div>
+             
+           
+           
+            </>
           );
         }
     

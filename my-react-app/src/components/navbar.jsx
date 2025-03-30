@@ -11,12 +11,12 @@ function SideBar() {
     <div style={{ backgroundColor: 'rgb(24, 22, 26)', position: 'fixed', bottom: 0, width: '100%', zIndex: 999 }}>
       <Nav fill variant="tabs" defaultActiveKey="/home">
         <Nav.Item>
-          <Nav.Link style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
+          <Nav.Link href="/" style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
             <FaHome /> <br />Home
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
+          <Nav.Link href="/newnote" style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
             <TiDocumentAdd /> <br />New Note
           </Nav.Link>
         </Nav.Item>
