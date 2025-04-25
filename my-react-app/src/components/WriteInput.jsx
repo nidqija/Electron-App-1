@@ -1,23 +1,98 @@
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { supabase } from '../CreateClient';
+import { useState , useEffect } from 'react';
+
 
 function WriteNotes() {
+  
+  const [notes , setUsers] = useState([]);
+  const [note , setUser] = useState({note_title : "  " , note_desc : " "});
+
+  console.log(note);
+
+  useEffect(()=>{
+     fetchNotes();
+  }, [])
+
+  async function fetchNotes(){
+    const { data , error} = await supabase.from("Notes").select("*");
+    if (error){
+      console.log("Error fetching notes:" , error);
+      return;
+
+
+    }
+
+    if (data){
+      setUsers(data);
+    }
+  }
+
+
+  function HandleChange(event){
+    const {name , value} = event.target;
+    setUser((prevFormData)=>({
+      ...prevFormData,
+      [name] :value,
+    }));
+  }
+
+
+  async function createNote(event){
+    event.preventDefault();
+
+    const {error} = await supabase.from("Notes").insert({
+      note_title : note.note_title,
+      note_desc : note.note_desc,
+    });
+
+    if (error){
+      alert("Error submitting the notes");
+      console.log(error);
+
+    } else{
+      handleSend();
+    }
+  }
+
+
+  function handleSend(){
+    if(!Notification in window){
+      alert("Submission failed , please try again");
+      return;
+
+    }
+
+    Notification.requestPermission().then((permission)=>{
+      if (permission == "granted"){
+        const notification = new Notification("Successful!");
+        notification.onclick=()=>{
+          window.open("about:blank");
+        };
+      }
+    });
+  }
+
+
+ 
+
   return (
     <div style={{backgroundColor : " rgb(24, 22, 26)" , height : "600px"}}>
     <div className='NotesInputWallpaper p-5' style={{backgroundColor : " rgb(24, 22, 26)"}}>
     <Container  >
-    <Form >
+    <Form onSubmit={createNote} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label className='Font text-white ' >Title</Form.Label>
-        <Form.Control style={{backgroundColor : " rgb(24, 22, 26)" , color : "white"}} className='text-white'  />
+        <Form.Control onChange={HandleChange} name='note_title' style={{backgroundColor : " rgb(24, 22, 26)" , color : "white"}} className='text-white'  />
      
       </Form.Group>
 
     
       <Form.Label className='text-white'>Description</Form.Label>
-        <Form.Control as="textarea"  rows={14} style={{backgroundColor : " rgb(24, 22, 26)"}} className='Font mb-4 text-white' />
-      <Button style={{backgroundColor : 'white' , color : 'black' , fontFamily : 'League Spartan' , fontWeight : '500'}} type="submit">
+        <Form.Control onChange={HandleChange} name='note_desc' as="textarea"  rows={14} style={{backgroundColor : " rgb(24, 22, 26)"}} className='Font mb-4 text-white' />
+      <Button  style={{backgroundColor : 'white' , color : 'black' , fontFamily : 'League Spartan' , fontWeight : '500'}} type="submit">
         Save
       </Button>
     </Form>
