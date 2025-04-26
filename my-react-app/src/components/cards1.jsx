@@ -4,17 +4,17 @@ import Button from 'react-bootstrap/Button';
 import { FaArrowRight } from "react-icons/fa";
 
 
-function Cards1({item}){
+function Cards1({note}){
     return(
       <>
     
-              <div >
+              <div className='mb-4' >
                 <Col >
                   <Card style={{height : '200px' , backgroundColor :'rgb(24, 22, 26)', borderColor : "white"}}>
                     <Card.Body style={{color :'white'}}>
-                      <Card.Title>{item.title} </Card.Title>
+                      <Card.Title>{note.note_title} </Card.Title>
                       <Card.Text>
-                      {item.description}
+                      Click to see the full description
                       </Card.Text>
                     </Card.Body>
                     <Button style={{backgroundColor:'rgb(24, 22, 26)', borderColor : "white"}}><FaArrowRight/></Button>
