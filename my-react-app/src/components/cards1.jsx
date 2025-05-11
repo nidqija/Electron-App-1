@@ -17,7 +17,7 @@ function Cards1({note}){
                       Click to see the full description
                       </Card.Text>
                     </Card.Body>
-                    <Button style={{backgroundColor:'rgb(24, 22, 26)', borderColor : "white"}}><FaArrowRight/></Button>
+                    <Button href={`/notes/${note.id}`} style={{backgroundColor:'rgb(24, 22, 26)', borderColor : "white"}}><FaArrowRight/></Button>
                   </Card>
                 </Col>
                 </div>

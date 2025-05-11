@@ -2,13 +2,13 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotesPage from './pages/HomePage';
 import NewNotes from './pages/newNotes';
+import NotePage from './pages/NotesPage';
 import { supabase } from './CreateClient';
 import { useEffect, useState } from 'react';
 
 function App() {
 
   const [notes , setUsers] = useState([]);
-  console.log(notes);
 
   useEffect(()=>{
     fetchUsers()
@@ -29,8 +29,9 @@ function App() {
       <Routes>
         <Route path="/" element={<NotesPage />} />
         <Route path="/newnote" element={<NewNotes/>}/>
+        <Route path="/notes/:id" element={<NotePage/>}/>
       </Routes>
-    </Router>
+    </Router> 
   );
 }
 
