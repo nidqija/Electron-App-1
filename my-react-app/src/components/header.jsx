@@ -57,7 +57,7 @@ function Header() {
                {notes && (
              <div className="note-page">
              
-          {notes.filter(note =>  note.id <= 6 && note.id >=3 ).map(note => (
+          {notes.filter(note => note.id >=3 ).map(note => (
              <Cards1  key={note.id} note={note}/>
            ))}
              </div>

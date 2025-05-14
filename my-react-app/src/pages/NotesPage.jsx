@@ -1,7 +1,8 @@
 import { useState , useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { supabase } from "../CreateClient";
-
+import NoteTitle from '../components/NoteTitle';
+import NotesRendering from '../components/notesRendering';
 
 
 function NotePage(){
@@ -31,15 +32,26 @@ function NotePage(){
 
     return(
       <div>
+
+        <NoteTitle/>
         
-       <h1>notes details</h1>
         {note && (
                 <>
-                    <h2>{note.note_title}</h2>
-                    <h2>{note.note_desc}</h2>
+               <div className='p-5' style={{backgroundColor: 'rgb(24, 22, 26)' , height : '670px' , fontFamily : 'League Spartan'}}>
+
+                    <h3 className='text-white'>{note.note_title}</h3>
+                    <div className='mt-5'>
+                    <h6 className='text-white'>{note.note_desc}</h6>
+                    <h6 className='text-white mt-5'>Created At</h6>
+                    <h6 className='text-white'>{note.created_at}</h6>
+
+                    </div>
+                    </div>
                 </>
             )}
+            
       </div>
+      
     )
 }
 
