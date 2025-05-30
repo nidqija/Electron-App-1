@@ -5,6 +5,12 @@ import NoteTitle from '../components/NoteTitle';
 import NotesRendering from '../components/notesRendering';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import SideBar from '../components/navbar';
+import EditableText from "../components/editableText";
+
+
+
+
+
 
 
 function NotePage(){
@@ -32,6 +38,37 @@ function NotePage(){
          fetchItem();
     } , [id]);
 
+    const handleTitleSave = async (NewTitle) => {
+
+        const {error} = await supabase.from("Notes").update({note_title: NewTitle }).eq('id' , id);
+        if (error){
+            console.error('Error updating title: ' , error.message);
+            return;
+        }
+
+        setNotes((prevNote) => ({
+            ...prevNote,
+             note_title:NewTitle,
+
+        }));
+    };
+
+
+    const handleDescSave = async (NewDesc) =>{
+        const {error} = await supabase.from("Notes").update({new_desc: NewDesc}).eq('id' ,id);
+        if (error){
+            console.error("Error updating description: " , error.message);
+            return;
+        }
+
+        setNotes((prevNote)=>({
+            ...prevNote,
+            note_desc : NewDesc,
+        }));
+    }
+
+
+
     return(
       <div>
 
@@ -41,9 +78,9 @@ function NotePage(){
                 <>
                <div className='p-5' style={{backgroundColor: 'rgb(24, 22, 26)' , height : '670px' , fontFamily : 'League Spartan'}}>
                     <a href="/"><IoIosArrowRoundBack href="/" className='text-white mb-5' style={{backgroundColor :  'rgb(24, 22, 26)' , fontSize : '20px'}} /></a>
-                    <h3 className='text-white'>{note.note_title}</h3>
+                    <EditableText initialText = {note.note_title} onSave={handleTitleSave}/>
                     <div className='mt-5'>
-                    <h6 className='text-white'>{note.note_desc}</h6>
+                    <EditableText initialText = {note.note_desc} onSave={handleDescSave}/>
                     <h6 className='text-white mt-5'>Created At</h6>
                     <h6 className='text-white'>{note.created_at}</h6>
 

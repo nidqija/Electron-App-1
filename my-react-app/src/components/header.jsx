@@ -1,9 +1,21 @@
 import Cards1 from "./cards1";
-import {Container} from 'react-bootstrap';
+import {Col, Container} from 'react-bootstrap';
 import {MyNotesData} from "../assets/data";
 import {Row} from "react-bootstrap";
 import { supabase } from "../CreateClient";
 import { useState , useEffect } from "react";
+
+
+function ChunkArray(array , chunkSize){
+
+    const chunks = [];
+
+    for( let i = 0 ; i < array.length; i+= chunkSize){
+        chunks.push(array.slice(i , i + chunkSize));
+    }
+
+    return chunks;
+}
 
 function Header() {
 
@@ -44,27 +56,26 @@ function Header() {
 
           <Container>
           <h5 className="p-2" style={{fontFamily : "League Spartan" , color : 'white'}}>My Notes</h5>
-          <Row xs={1} md={3} className="g-4 p-1">
            {fetchError && (<p>{fetchError}</p>)}
-           {notes && (
-             <div className="note-page">
-             
-          {notes.filter(note => note.id <= 3).map(note => (
-             <Cards1  key={note.id} note={note}/>
+          
+           {notes && ChunkArray(notes , 3).map((noteGroup , rowIndex) => (
+          <Row xs={1} md={3} className="g-4 p-1" key={rowIndex}>
+              {noteGroup.map((note)=>(
+                <Col key={note.id}>
+                   <Cards1 note={note}/>
+                </Col>
+              ))}
+
+           </Row>
+
            ))}
-             </div>
-            )}
-               {notes && (
-             <div className="note-page">
+
+           
+        
              
-          {notes.filter(note => note.id >=3 ).map(note => (
-             <Cards1  key={note.id} note={note}/>
-           ))}
-             </div>
-            )}
+          
     
     
-         </Row>
         </Container>
         </div>
 
