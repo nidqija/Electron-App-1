@@ -13,6 +13,7 @@ function Cards1({note}){
                   <Card style={{height : '200px' , backgroundColor :'rgb(24, 22, 26)', borderColor : "white"}}>
                     <Card.Body style={{color :'white'}}>
                       <Card.Title>{note.note_title} </Card.Title>
+                      
                       <Card.Text>
                       Click to see the full description
                       </Card.Text>

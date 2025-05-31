@@ -6,6 +6,7 @@ import NotesRendering from '../components/notesRendering';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import SideBar from '../components/navbar';
 import EditableText from "../components/editableText";
+import EditableText2 from '../components/editableText2';
 
 
 
@@ -40,7 +41,7 @@ function NotePage(){
 
     const handleTitleSave = async (NewTitle) => {
 
-        const {error} = await supabase.from("Notes").update({note_title: NewTitle }).eq('id' , id);
+        const {error} = await supabase.from("Notes").update({note_title: NewTitle }).eq('id' , id).single();
         if (error){
             console.error('Error updating title: ' , error.message);
             return;
@@ -55,7 +56,7 @@ function NotePage(){
 
 
     const handleDescSave = async (NewDesc) =>{
-        const {error} = await supabase.from("Notes").update({new_desc: NewDesc}).eq('id' ,id);
+        const {error} = await supabase.from("Notes").update({note_desc: NewDesc}).eq('id' ,id).single();
         if (error){
             console.error("Error updating description: " , error.message);
             return;
@@ -80,7 +81,7 @@ function NotePage(){
                     <a href="/"><IoIosArrowRoundBack href="/" className='text-white mb-5' style={{backgroundColor :  'rgb(24, 22, 26)' , fontSize : '20px'}} /></a>
                     <EditableText initialText = {note.note_title} onSave={handleTitleSave}/>
                     <div className='mt-5'>
-                    <EditableText initialText = {note.note_desc} onSave={handleDescSave}/>
+                    <EditableText2 initialText2 = {note.note_desc} onSave={handleDescSave}/>
                     <h6 className='text-white mt-5'>Created At</h6>
                     <h6 className='text-white'>{note.created_at}</h6>
 
