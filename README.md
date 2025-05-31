@@ -1,6 +1,6 @@
 ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
 
-# 📝 NoteKeeper – A Simple Note-Taking App....But Better!
+# 📝 NoteMate! – A Simple Note-Taking App....But Better!
 
 **NoteKeeper** is a lightweight and intuitive note-taking application designed to help you quickly capture and organize your thoughts, to-dos, and ideas. Whether you're managing daily tasks or jotting down inspiration on the go, NoteKeeper provides a distraction-free and efficient way to stay organized.
 
