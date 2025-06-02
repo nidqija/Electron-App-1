@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../CreateClient";
 import NoteTitle from '../components/NoteTitle';
 import NotesRendering from '../components/notesRendering';
@@ -7,7 +7,8 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import SideBar from '../components/navbar';
 import EditableText from "../components/editableText";
 import EditableText2 from '../components/editableText2';
-
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 
 
@@ -18,6 +19,11 @@ function NotePage(){
     const {id }= useParams();
     const [note , setNotes] = useState(null);
     const [error , setFetchErrors] = useState(null);
+    const navigate = useNavigate();
+    const [show , setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     useEffect(()=>{
         const fetchItem = async()=>{
@@ -69,6 +75,17 @@ function NotePage(){
     }
 
 
+    const deleteNotesAll = async () =>{
+        const {error} = await supabase.from("Notes").delete().eq('id',id);
+        if(error){
+            console.error("Error deleting notes:", error.message);
+            return;   
+        }
+
+        navigate("/"); // redirects to home page
+
+    }
+
 
     return(
       <div>
@@ -77,7 +94,7 @@ function NotePage(){
 
         {note && (
                 <>
-               <div className='p-5' style={{backgroundColor: 'rgb(24, 22, 26)' , height : '670px' , fontFamily : 'League Spartan'}}>
+                <div className='p-5' style={{backgroundColor: 'rgb(24, 22, 26)' , height : '670px' , fontFamily : 'League Spartan'}}>
                     <a href="/"><IoIosArrowRoundBack href="/" className='text-white mb-5' style={{backgroundColor :  'rgb(24, 22, 26)' , fontSize : '20px'}} /></a>
                     <EditableText initialText = {note.note_title} onSave={handleTitleSave}/>
                     <div className='mt-5'>
@@ -87,8 +104,25 @@ function NotePage(){
 
                     </div>
                        
-
+                   <div className='mt-5'>
+                        <Button variant='danger' onClick={handleShow}>delete</Button>
                     </div>
+                    <Modal className='p-5' show={show} onHide={handleClose} style={{ borderRadius : '20px'}}>
+                       <Modal.Header style={{backgroundColor:'rgb(24, 22, 26)'}} >
+                         <Modal.Title style={{fontFamily:"League Spartan" , color:'white'}}>Are you sure?</Modal.Title>
+                       </Modal.Header>
+                          <Modal.Footer style={{backgroundColor:'rgb(24, 22, 26)'}} >
+                        <Button className='justify-content-end' onClick={handleClose} id='button'>Cancel</Button>
+                      <Button variant="danger" onClick={deleteNotesAll}>
+                           Proceed
+                       </Button>
+                       </Modal.Footer>
+                    </Modal>
+
+                    
+                    </div>
+
+                    
                      <SideBar/>
                 </>
             )}
