@@ -2,7 +2,6 @@ import { useState , useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../CreateClient";
 import NoteTitle from '../components/NoteTitle';
-import NotesRendering from '../components/notesRendering';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import SideBar from '../components/navbar';
 import EditableText from "../components/editableText";
