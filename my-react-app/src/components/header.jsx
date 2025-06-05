@@ -5,6 +5,8 @@ import {Row} from "react-bootstrap";
 import { supabase } from "../CreateClient";
 import { useState , useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Alert } from "react-bootstrap";
+
 
 function ChunkArray(array , chunkSize){
 
@@ -23,6 +25,7 @@ function Header() {
    const [fetchError , setFetchErrors] = useState(null);
     const location = useLocation();
     const message = location.state?.message;
+    const [alerts , setAlerts] = useState(false);
 
   
 
@@ -57,7 +60,20 @@ function Header() {
         <div className="headerBackground">
 
           <Container>
+               <div>
+            {message && 
+            
+            <Alert variant="success" onClose={() => setAlerts(true)} dismissible>
+               <Alert.Heading>Congratulations!</Alert.Heading>
+                <p>
+                 Your new note is created!
+                </p>
+               </Alert>
+            
+            }
+           </div>
           <h5 className="p-2" style={{fontFamily : "League Spartan" , color : 'white'}}>My Notes</h5>
+
            {fetchError && (<p>{fetchError}</p>)}
           
            {notes && ChunkArray(notes , 3).map((noteGroup , rowIndex) => (
@@ -73,9 +89,7 @@ function Header() {
            ))}
 
         </Container>
-            <div>
-            {message && <h1 className="text-white">{message}</h1>}
-           </div>
+         
         </div>
 
 
