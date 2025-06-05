@@ -2,13 +2,14 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { FaArrowRight } from "react-icons/fa";
+import sendMessageModal from "../components/WriteInput";
 
 
 function Cards1({note}){
     return(
       <>
     
-              <div className='mb-4' >
+              <div className='mb-5' >
                 <Col >
                   <Card style={{height : '200px' , backgroundColor :'rgb(24, 22, 26)', borderColor : "white"}}>
                     <Card.Body style={{color :'white'}}>
@@ -22,6 +23,10 @@ function Cards1({note}){
                   </Card>
                 </Col>
                 </div>
+                <div>
+                 
+                </div>
+
              
            
            

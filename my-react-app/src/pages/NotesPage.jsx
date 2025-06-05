@@ -13,7 +13,6 @@ import { Modal } from 'react-bootstrap';
 
 
 
-
 function NotePage(){
     const {id }= useParams();
     const [note , setNotes] = useState(null);
@@ -22,6 +21,7 @@ function NotePage(){
     const [show , setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
 
     useEffect(()=>{
@@ -46,7 +46,7 @@ function NotePage(){
 
     const handleTitleSave = async (NewTitle) => {
 
-        const {error} = await supabase.from("Notes").update({note_title: NewTitle }).eq('id' , id).single();
+        const {error} = await supabase.from("Notes").update({note_title: NewTitle }).eq('id' , id);
         if (error){
             console.error('Error updating title: ' , error.message);
             return;
@@ -61,7 +61,7 @@ function NotePage(){
 
 
     const handleDescSave = async (NewDesc) =>{
-        const {error} = await supabase.from("Notes").update({note_desc: NewDesc}).eq('id' ,id).single();
+        const {error} = await supabase.from("Notes").update({note_desc: NewDesc}).eq('id' ,id);
         if (error){
             console.error("Error updating description: " , error.message);
             return;
@@ -108,11 +108,11 @@ function NotePage(){
                     </div>
                     <Modal className='p-5' show={show} onHide={handleClose} style={{ borderRadius : '20px'}}>
                        <Modal.Header style={{backgroundColor:'rgb(24, 22, 26)'}} >
-                         <Modal.Title style={{fontFamily:"League Spartan" , color:'white'}}>Are you sure?</Modal.Title>
+                         <Modal.Title style={{fontFamily:"League Spartan" , color:'white' , fontSize : '20px'}}>Are you sure?</Modal.Title>
                        </Modal.Header>
                           <Modal.Footer style={{backgroundColor:'rgb(24, 22, 26)'}} >
                         <Button className='justify-content-end' onClick={handleClose} id='button'>Cancel</Button>
-                      <Button variant="danger" onClick={deleteNotesAll}>
+                      <Button variant="danger" onClick={deleteNotesAll} style={{fontFamily: 'League Spartan'}}>
                            Proceed
                        </Button>
                        </Modal.Footer>

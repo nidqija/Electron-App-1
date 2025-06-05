@@ -3,12 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { supabase } from '../CreateClient';
 import { useState , useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 function WriteNotes() {
   
   const [notes , setUsers] = useState([]);
+  const navigate = useNavigate();
   const [note , setUser] = useState({note_title : "  " , note_desc : " "});
+  const [messageModal , setMessageModal] = useState(false);
 
   console.log(note);
 
@@ -39,6 +42,10 @@ function WriteNotes() {
     }));
   }
 
+   const sendMessageModal = () =>{
+      navigate('/' ,  {state:{message : 'Note created succesfully!'}})
+   }
+
 
   async function createNote(event){
     event.preventDefault();
@@ -56,6 +63,7 @@ function WriteNotes() {
       handleSend();
     }
   }
+
 
 
   function handleSend(){
@@ -92,7 +100,7 @@ function WriteNotes() {
     
       <Form.Label className='Font text-white'>Description</Form.Label>
         <Form.Control onChange={HandleChange} name='note_desc' as="textarea"  rows={14} style={{backgroundColor : " rgb(24, 22, 26)"}} className='Font mb-4 text-white' />
-      <Button  style={{backgroundColor : 'white' , color : 'black' , fontFamily : 'League Spartan' , fontWeight : '500'}} type="submit">
+      <Button  style={{backgroundColor : 'white' , color : 'black' , fontFamily : 'League Spartan' , fontWeight : '500'}} type="submit" onClick={sendMessageModal}>
         Save
       </Button>
     </Form>

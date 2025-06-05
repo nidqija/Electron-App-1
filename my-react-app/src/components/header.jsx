@@ -4,7 +4,7 @@ import {MyNotesData} from "../assets/data";
 import {Row} from "react-bootstrap";
 import { supabase } from "../CreateClient";
 import { useState , useEffect } from "react";
-
+import { useLocation } from "react-router-dom";
 
 function ChunkArray(array , chunkSize){
 
@@ -21,6 +21,8 @@ function Header() {
 
    const [notes , setUsers] = useState(null);
    const [fetchError , setFetchErrors] = useState(null);
+    const location = useLocation();
+    const message = location.state?.message;
 
   
 
@@ -70,13 +72,10 @@ function Header() {
 
            ))}
 
-           
-        
-             
-          
-    
-    
         </Container>
+            <div>
+            {message && <h1 className="text-white">{message}</h1>}
+           </div>
         </div>
 
 
