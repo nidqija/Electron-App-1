@@ -73,15 +73,18 @@ function NotePage(){
         }));
     }
 
+     
+
 
     const deleteNotesAll = async () =>{
         const {error} = await supabase.from("Notes").delete().eq('id',id);
+        
         if(error){
             console.error("Error deleting notes:", error.message);
             return;   
         }
 
-        navigate("/"); // redirects to home page
+     navigate('/' , {state:{message2 : 'Note deleted successfully'}});
 
     }
 
@@ -112,7 +115,10 @@ function NotePage(){
                        </Modal.Header>
                           <Modal.Footer style={{backgroundColor:'rgb(24, 22, 26)'}} >
                         <Button className='justify-content-end' onClick={handleClose} id='button'>Cancel</Button>
-                      <Button variant="danger" onClick={deleteNotesAll} style={{fontFamily: 'League Spartan'}}>
+                      <Button variant="danger" onClick={() =>{
+                        deleteNotesAll();
+                        }} 
+                        style={{fontFamily: 'League Spartan'}}>
                            Proceed
                        </Button>
                        </Modal.Footer>

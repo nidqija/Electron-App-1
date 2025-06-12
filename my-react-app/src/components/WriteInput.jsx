@@ -50,6 +50,9 @@ function WriteNotes() {
    }
 
 
+ 
+
+
   async function createNote(event){
     event.preventDefault();
 

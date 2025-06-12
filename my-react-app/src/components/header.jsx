@@ -18,16 +18,25 @@ function Header() {
   const [fetchError, setFetchErrors] = useState(null);
   const location = useLocation();
   const message = location.state?.message;
+  const message2 = location.state?.message2;
   const [alerts, setAlerts] = useState(false);
+  const [deleteAlerts , setDeleteAlerts] = useState(false);
   const [loading , setLoading] = useState(true); // add loading state
 
   const closeAlerts = () => setAlerts(false);
+  const closeDeleteAlerts = () => setDeleteAlerts(false);
 
   useEffect(() => {
     if (message) {
       setAlerts(true);
     }
   }, [message]);
+
+  useEffect(()=>{
+     if (message2){
+      setDeleteAlerts(true);
+    }
+  },[message2]);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -63,6 +72,14 @@ function Header() {
               <Alert variant="success" onClose={closeAlerts} dismissible>
                 <Alert.Heading>Congratulations!</Alert.Heading>
                 <p>Your new note is created!</p>
+              </Alert>
+            )}
+          </div>
+          <div>
+               {message2 && deleteAlerts && (
+               <Alert variant="danger" onClose={closeDeleteAlerts} dismissible>
+                <Alert.Heading>Attention!</Alert.Heading>
+                <p>Your note is deleted!</p>
               </Alert>
             )}
           </div>
