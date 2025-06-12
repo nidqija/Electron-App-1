@@ -36,9 +36,9 @@ function EditableText2({ initialText2, onSave }) {
       className="form-control"
     />
   ) : (
-    <h3 className="text-white" onDoubleClick={handleDoubleClick2}>
+    <h5 className="text-white" onDoubleClick={handleDoubleClick2}>
       {text2}
-    </h3>
+    </h5>
   );
 }
 
