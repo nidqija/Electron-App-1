@@ -3,6 +3,7 @@ import { Col, Container, Row, Alert } from "react-bootstrap";
 import { supabase } from "../CreateClient";
 import { useState, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import Loading from "../assets/loading";
 
 function ChunkArray(array, chunkSize) {
   const chunks = [];
@@ -18,6 +19,7 @@ function Header() {
   const location = useLocation();
   const message = location.state?.message;
   const [alerts, setAlerts] = useState(false);
+  const [loading , setLoading] = useState(true); // add loading state
 
   const closeAlerts = () => setAlerts(false);
 
@@ -30,6 +32,7 @@ function Header() {
   useEffect(() => {
     const fetchNotes = async () => {
       const { data, error } = await supabase.from("Notes").select();
+        setLoading(false);
 
       if (error) {
         setFetchErrors("Could not fetch the notes.");
@@ -44,8 +47,13 @@ function Header() {
     fetchNotes();
   }, []);
 
+
+
   const chunkedNotes = useMemo(() => ChunkArray(notes, 3), [notes]);
 
+    if (loading){
+     return <Loading/>;
+  }
   return (
     <>
       <div className="headerBackground">

@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { supabase } from '../CreateClient';
 import { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../assets/loading';
 
 
 function WriteNotes() {
@@ -12,6 +13,7 @@ function WriteNotes() {
   const navigate = useNavigate();
   const [note , setUser] = useState({note_title : "  " , note_desc : " "});
   const [messageModal , setMessageModal] = useState(false);
+  const [loading , setLoading] = useState(true);
 
   console.log(note);
 
@@ -21,6 +23,7 @@ function WriteNotes() {
 
   async function fetchNotes(){
     const { data , error} = await supabase.from("Notes").select("*");
+    setLoading(false);
     if (error){
       console.log("Error fetching notes:" , error);
       return;
@@ -81,6 +84,10 @@ function WriteNotes() {
         };
       }
     });
+  }
+
+  if (loading){
+    return <Loading/>;
   }
 
 
