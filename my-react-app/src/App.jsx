@@ -5,6 +5,7 @@ import NewNotes from './pages/newNotes';
 import NotePage from './pages/NotesPage';
 import { supabase } from './CreateClient';
 import { useEffect, useState } from 'react';
+import Intropage from './pages/IntroPage';
 
 function App() {
 
@@ -27,7 +28,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<NotesPage />} />
+        <Route path='/' element={<Intropage/>}/>
+        <Route path="/home" element={<NotesPage />} />
         <Route path="/newnote" element={<NewNotes/>}/>
         <Route path="/notes/:id" element={<NotePage/>}/>
       </Routes>

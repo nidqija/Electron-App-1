@@ -46,7 +46,7 @@ function WriteNotes() {
   }
 
    const sendMessageModal = () =>{
-      navigate('/' ,  {state:{message : 'Note created succesfully!'}})
+      navigate('/home' ,  {state:{message : 'Note created succesfully!'}})
    }
 
 

@@ -84,7 +84,7 @@ function NotePage(){
             return;   
         }
 
-     navigate('/' , {state:{message2 : 'Note deleted successfully'}});
+     navigate('/home' , {state:{message2 : 'Note deleted successfully'}});
 
     }
 

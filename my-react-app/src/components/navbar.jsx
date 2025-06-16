@@ -9,9 +9,9 @@ import { IoIosStats } from "react-icons/io";
 function SideBar() {
   return (
     <div style={{ backgroundColor: 'rgb(24, 22, 26)', position: 'fixed', bottom: 0, width: '100%', zIndex: 999 }}>
-      <Nav fill variant="tabs" defaultActiveKey="/home">
+      <Nav fill variant="tabs" defaultActiveKey="/">
         <Nav.Item>
-          <Nav.Link href="/" style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
+          <Nav.Link href="/home" style={{ color: 'white', fontFamily: 'League Spartan', fontWeight: '400' }}>
             <FaHome /> <br />Home
           </Nav.Link>
         </Nav.Item>
