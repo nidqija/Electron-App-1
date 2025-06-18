@@ -97,7 +97,7 @@ function NotePage(){
         {note && (
                 <>
                 <div className='p-5' style={{backgroundColor: 'rgb(24, 22, 26)' , height : '670px' , fontFamily : 'League Spartan'}}>
-                    <a href="/"><IoIosArrowRoundBack href="/" className='text-white mb-5' style={{backgroundColor :  'rgb(24, 22, 26)' , fontSize : '20px'}} /></a>
+                    <a href="/home"><IoIosArrowRoundBack href="/" className='text-white mb-5' style={{backgroundColor :  'rgb(24, 22, 26)' , fontSize : '20px'}} /></a>
                     <EditableText initialText = {note.note_title} onSave={handleTitleSave}/>
                     <div className='mt-5'>
                     <EditableText2 initialText2 = {note.note_desc} onSave={handleDescSave}/>

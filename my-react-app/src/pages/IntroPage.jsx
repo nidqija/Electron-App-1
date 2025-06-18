@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import "../App.css";
 
 
+
 function Intropage() {
   const navigate = useNavigate();
 
@@ -19,8 +20,8 @@ function Intropage() {
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ textAlign: 'center',height: '100vh' }} >
     <div>
-      <h1 className="text-white"><GiPenguin /> NoteMate!</h1>
-      <p className="text-white">A note app. But better!</p>
+      <h1 className=" text-white" id="example-fade-text"><GiPenguin /> NoteMate!</h1>
+      <p className="text-white" id="example-fade-text ">A note app. But better!</p>
     </div>
     </Container>
   );
