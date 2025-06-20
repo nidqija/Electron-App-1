@@ -29,6 +29,15 @@ body {
     border-color: white;
 }
 
+.dropdown{
+    color: white;
+}
+
+#basic-nav-dropdown{
+    color: white ;
+    background-color: rgb(24, 22, 26);
+}
+
 @font-face {
     font-family: League Spartan;
     src: url(../public/LeagueSpartan-VariableFont_wght.ttf);

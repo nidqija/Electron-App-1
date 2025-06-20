@@ -8,8 +8,11 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import SideBar from "../components/navbar";
 import EditableText from "../components/editableText";
 import EditableText2 from "../components/editableText2";
-import { Button, Modal, Alert } from "react-bootstrap";
+import { Button, Modal, Alert, Navbar } from "react-bootstrap";
 import {Container} from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
+import Nav from 'react-bootstrap/Nav';
+import '../App.css';
 
 function NotePage() {
   const { id } = useParams();
@@ -43,6 +46,8 @@ function NotePage() {
         setFetchError(err.message);
       }
     };
+
+
 
     fetchNote();
   }, [id]);
@@ -94,9 +99,23 @@ function NotePage() {
               fontFamily: "League Spartan",
             }}
           >
-            <a href="/home">
-              <IoIosArrowRoundBack className="text-white mb-5" style={{ fontSize: "20px" }} />
-            </a>
+           
+
+            
+                <Navbar className="mb-5"  style={{backgroundColor: 'rgb(24, 22, 26)' }}>
+        <Navbar.Brand className="text-white" href="#home"> <a href="/home">
+              <IoIosArrowRoundBack className="text-white " style={{ fontSize: "20px" }} />
+            </a></Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end" >
+          <Navbar.Text className="text-white" >
+            <NavDropdown title="..." id="basic-nav-dropdown" style={{backgroundColor: 'rgb(24, 22, 26)' , color:'white'}} >
+              <NavDropdown.Item href="#action/3.1"  >Add Calendar</NavDropdown.Item>
+            </NavDropdown>
+          </Navbar.Text>
+        </Navbar.Collapse>
+    </Navbar>
+
 
             <EditableText initialText={note.note_title} onSave={handleTitleSave} />
             <div className="mt-5">
