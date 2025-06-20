@@ -29,7 +29,7 @@ function Intropage() {
     from:{opacity:0,transform: 'translateY(20px)'},
     enter:{opacity:1,transform: 'translateY(0px)' },
     leave:{opacity:0,transform: 'translateY(-20px)'},
-    config:{duration:1000},
+    config:{duration:700},
   })
 
 

@@ -23,8 +23,12 @@ function Header() {
   const [deleteAlerts , setDeleteAlerts] = useState(false);
   const [loading , setLoading] = useState(true); // add loading state
 
+
   const closeAlerts = () => setAlerts(false);
   const closeDeleteAlerts = () => setDeleteAlerts(false);
+
+
+  
 
   useEffect(() => {
     if (message) {
